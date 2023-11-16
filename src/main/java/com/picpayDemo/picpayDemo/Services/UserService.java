@@ -7,7 +7,6 @@ import com.picpayDemo.picpayDemo.Exceptions.NotEnoughFundsException;
 import com.picpayDemo.picpayDemo.Repos.UserRepo;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import javax.management.openmbean.KeyAlreadyExistsException;
@@ -29,7 +28,7 @@ public class UserService {
         }
     }
 
-    public User getUserByDocument(String document) throws Exception {
+    public User getUserByDocument(String document) {
         Optional<User> user = userRepo.findUserByDocument(document);
         if (user.isEmpty()) {
             throw new EntityNotFoundException();
@@ -45,7 +44,7 @@ public class UserService {
         }
     }
 
-    public List<User> getAllUsers() throws Exception {
+    public List<User> getAllUsers() {
         return userRepo.findAll();
     }
 }

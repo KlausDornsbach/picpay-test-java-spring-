@@ -37,7 +37,7 @@ public class TransactionService {
 
         if (!authorizeTransaction()) {
             throw new Exception("Error: external authorization of transaction failed");
-        };
+        }
 
         Transaction transaction = createTransaction(sender, receiver, transactionDTO.amount());
         sender.setBalance(sender.getBalance().subtract(transactionDTO.amount()));
@@ -65,8 +65,7 @@ public class TransactionService {
     }
 
     public Transaction createTransaction(User sender, User receiver, BigDecimal value) {
-        Transaction t = new Transaction(sender, receiver, value);
-        return t;
+        return new Transaction(sender, receiver, value);
     }
 
     public void saveTransactionToDB(Transaction transaction) {

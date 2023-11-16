@@ -19,11 +19,11 @@ public class UserController {
     public ResponseEntity<User> createUser(@RequestBody UserDTO userDTO) {
         User user = new User(userDTO);
         userService.saveUserToDB(user);
-        return new ResponseEntity<User>(user, HttpStatus.CREATED);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
     @GetMapping("/getAll")
     public ResponseEntity<List<User>> getAllUsers() throws Exception {
-        return new ResponseEntity<List<User>>(userService.getAllUsers(), HttpStatus.OK);
+        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 }
